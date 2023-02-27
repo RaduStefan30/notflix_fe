@@ -1,0 +1,12 @@
+.get-started__btn {
+  width: 30%;
+  font-size: $font-size-large-2;
+  height: 6rem;
+  padding-left: 3rem;
+  @include flex-center-align-items;
+
+  & * {
+    font-size: $font-size-large-3;
+    margin-left: $margin-small-1;
+  }
+}

@@ -1,0 +1,13 @@
+.nav {
+  @include flex-center-align-items;
+  justify-content: space-between;
+  padding: $padding-large-2;
+
+  &__links {
+    @include flex-center-align-items;
+    gap: $margin-large-1;
+    font-size: $font-size-large-1;
+    font-weight: $font-weight-medium;
+    padding: $padding-small-1;
+  }
+}

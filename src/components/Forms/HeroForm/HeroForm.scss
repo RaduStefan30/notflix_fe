@@ -1,0 +1,7 @@
+.hero__form {
+  text-align: center;
+  div {
+    @include flex-center-items;
+    width: 72rem;
+  }
+}

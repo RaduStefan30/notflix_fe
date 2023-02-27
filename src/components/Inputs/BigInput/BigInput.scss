@@ -1,0 +1,11 @@
+.big-input {
+  width: 70%;
+  font-size: $font-size-small-2;
+  height: 6rem;
+  padding: $padding-small-1;
+  border: none;
+  &::placeholder {
+    font-size: $font-size-small-1;
+    color: $text-color-gray;
+  }
+}
