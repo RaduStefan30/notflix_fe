@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./scss/main.scss";
 import { Provider } from "react-redux";
-import store from "./store/store";
+import { store } from "./store/store";
 import Home from "./pages/Home/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Protected from "./components/Protected/Protected";

@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 import GetStartedButton from "../../Buttons/GetStartedButton/GetStartedButton";
 import BigInput from "../../Inputs/BigInput/BigInput";
 
 const HeroForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state: any) => state.user);
+  const auth = useAppSelector((state: any) => state.auth);
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch({
-      type: "user/update",
+      type: "auth/update",
       payload: {
         email,
       },

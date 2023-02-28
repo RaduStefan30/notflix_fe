@@ -1,4 +1,5 @@
 import HeroForm from "../../components/Forms/HeroForm/HeroForm";
+import Logo from "../../components/Logo/Logo";
 import NavBar from "../../components/Nav/NavBar/NavBar";
 
 const Home = () => {

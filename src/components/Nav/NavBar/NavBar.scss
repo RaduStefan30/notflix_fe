@@ -1,7 +1,7 @@
 .nav {
   @include flex-center-align-items;
   justify-content: space-between;
-  padding: $padding-large-2;
+  padding: 3rem 6rem;
 
   &__links {
     @include flex-center-align-items;

@@ -1,16 +1,15 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Login from "../../pages/Login/Login";
+import { useAppSelector } from "../../hooks";
 
 const Protected = (props: { children: any }) => {
-  const { auth } = useSelector((state: any) => state.user);
+  const { token } = useAppSelector((state: any) => state.auth);
   const navigate = useNavigate();
-  if (auth) return props.children;
+  if (token) return props.children;
 
   useEffect(() => {
-    if (!auth) navigate("../login", { replace: true });
-  }, [auth]);
+    if (!token) navigate("../login", { replace: true });
+  }, [token]);
 };
 
 export default Protected;

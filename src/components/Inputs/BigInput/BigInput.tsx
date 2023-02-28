@@ -7,7 +7,7 @@ const BigInput = (props: {
   const { placeholder, autocomplete, value, onChange } = props;
   return (
     <input
-      className="big-input"
+      className="input--big"
       placeholder={placeholder}
       autoComplete={autocomplete}
       value={value}
