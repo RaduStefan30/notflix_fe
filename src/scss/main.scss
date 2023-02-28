@@ -8,8 +8,6 @@
 
 @import "components/buttons";
 
-@import "../App.scss";
-
 @import "../components/Buttons/SignInButton/SignInButton.scss";
 @import "../components/Buttons/GetStartedButton/GetStartedButton.scss";
 
@@ -23,3 +21,5 @@
 @import "../components/Nav/NavLink/NavLink.scss";
 
 @import "../pages/Home/Home.scss";
+@import "../pages/Browse/Browse.scss";
+@import "../pages/Login/Login.scss";

@@ -4,7 +4,7 @@ import NavBar from "../../components/Nav/NavBar/NavBar";
 const Home = () => {
   return (
     <div className="home">
-      <NavBar />;
+      <NavBar />
       <section className="hero">
         <h1 className="hero__title">
           Unlimited movies, TV
