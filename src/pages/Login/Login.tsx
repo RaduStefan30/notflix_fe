@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Alert from "../../components/Alert/Alert";
+
 import SmallInput from "../../components/Inputs/SmallInput/SmallInput";
 import Logo from "../../components/Logo/Logo";
-import { useAppDispatch } from "../../hooks";
+
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { login } from "../../store/reducers/authSlice";
 
 const Login = () => {
@@ -10,6 +13,11 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [showText, setShowText] = useState(false);
+  const [alert, setAlert] = useState({
+    type: "",
+    message: "",
+    display: false,
+  });
 
   const handleLearnMore = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -17,12 +25,29 @@ const Login = () => {
   };
 
   const onSuccess = () => {
-    navigate("/browse");
+    setAlert({
+      type: "success",
+      message: "You have successfully logged in!",
+      display: true,
+    });
+    setTimeout(() => {
+      navigate("/browse");
+    }, 3000);
   };
 
-  const onError = () => {
-    console.log("error");
+  const onError = (error: string) => {
+    setAlert({ type: "error", message: error, display: true });
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setAlert({ type: "", message: "", display: false });
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [alert.display]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,13 +58,18 @@ const Login = () => {
 
   return (
     <div className="login">
+      {alert.display && <Alert type={alert.type} message={alert.message} />}
       <Logo />
       <div className="login__container">
         <h1 className="login__title">Sign In</h1>
         <form onSubmit={handleSubmit} className="login__form">
           <SmallInput placeholder="Email" id="email" type="text" />
           <SmallInput placeholder="Password" id="password" type="password" />
-          <button type="submit" className="btn btn--primary">
+          <button
+            type="submit"
+            className="btn btn--primary"
+            disabled={alert.display}
+          >
             Sign In
           </button>
         </form>
@@ -73,6 +103,7 @@ const Login = () => {
                 <a
                   href="https://policies.google.com/privacy"
                   target={"_blank"}
+                  rel="noreferrer"
                   className="link"
                 >
                   Privacy Policy
@@ -81,6 +112,7 @@ const Login = () => {
                 <a
                   href="https://policies.google.com/terms"
                   target={"_blank"}
+                  rel="noreferrer"
                   className="link"
                 >
                   Terms of Service

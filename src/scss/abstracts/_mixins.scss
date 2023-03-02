@@ -33,3 +33,39 @@
   animation: $animation $duration $method $times;
   animation-fill-mode: both;
 }
+
+@mixin fade-in {
+  @include flex-center-align-items;
+  flex-direction: column;
+  gap: $margin-regular-2;
+
+  @include keyframes(fade-in) {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @include animate(fade-in, 1s, linear, 1);
+}
+
+@mixin fade-out {
+  @include keyframes(fade-out) {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @include animate(fade-out, 1s, linear, 1);
+}

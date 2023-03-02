@@ -30,11 +30,12 @@ export const login = (
   return async (dispatch: any) => {
     const response = (await api.auth(data, "login")) as any;
 
-    if (response.error) {
-      return onError(response.message);
+    console.log(response);
+    if (response.message) {
+      return onError(response.response.data.message);
     }
     const userData = response.data;
-    localStorage.setItem("auth", JSON.stringify(userData));
+    if (userData) localStorage.setItem("auth", JSON.stringify(userData));
 
     dispatch(authSlice.actions.setUser(userData));
 

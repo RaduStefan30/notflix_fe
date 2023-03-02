@@ -11,7 +11,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     const auth = localStorage.getItem("auth");
-    if (!auth) return config;
+    if (!auth || auth === undefined) return config;
 
     const { token } = JSON.parse(auth);
 
@@ -36,10 +36,8 @@ export const auth = async (
       email,
       password,
     });
-    console.log(response);
     return response;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

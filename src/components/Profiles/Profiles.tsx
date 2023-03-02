@@ -6,6 +6,7 @@ import Profile from "./Profile/Profile";
 
 const Profiles = (props: { editMode: boolean }) => {
   const [profiles, setProfiles] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
   const { editMode } = props || false;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Profiles = (props: { editMode: boolean }) => {
 
   const onSuccess = (profiles: any) => {
     setProfiles(profiles);
+    setIsMounted(true);
   };
 
   const onError = (message: string) => {
@@ -55,7 +57,7 @@ const Profiles = (props: { editMode: boolean }) => {
 
   return (
     <div className="profiles">
-      <div className="profiles__container">
+      <div className={isMounted ? "profiles__container" : "hidden"}>
         <h1 className="profiles__title">
           {editMode ? "Manage Profiles:" : "Who's watching?"}
         </h1>

@@ -5,23 +5,7 @@
   letter-spacing: 0.1rem;
 
   &__container {
-    @include flex-center-align-items;
-    flex-direction: column;
-    gap: $margin-regular-2;
-
-    @include keyframes(fade-in) {
-      0% {
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.5;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @include animate(fade-in, 2s, linear, 1);
+    @include fade-in;
   }
 
   &__title {

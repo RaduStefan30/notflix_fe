@@ -26,7 +26,7 @@ const Browse = () => {
   };
   return (
     <div>
-      {displayProfiles && <Profiles />}
+      {displayProfiles && <Profiles editMode={false} />}
       {!displayProfiles && <button onClick={logout}>Log out fake</button>}
     </div>
   );

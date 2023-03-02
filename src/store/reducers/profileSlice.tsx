@@ -10,8 +10,8 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState: {
     name: name,
-    display: display || true,
-    manage: manage || "general",
+    display: display,
+    manage: manage,
   },
   reducers: {
     setProfile(state: any, action: any) {

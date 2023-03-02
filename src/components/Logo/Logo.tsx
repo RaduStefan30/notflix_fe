@@ -1,5 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 const Logo = () => {
-  return <img src="logo.png" className="logo" />;
+  const navigate = useNavigate();
+  return (
+    <img
+      src="logo.png"
+      className="logo"
+      onClick={() => {
+        navigate("/");
+      }}
+    />
+  );
 };
 
 export default Logo;

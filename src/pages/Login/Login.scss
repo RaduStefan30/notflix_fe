@@ -47,6 +47,11 @@
     font-size: $font-size-small-2;
     padding: $padding-small-2;
     margin-top: $margin-small-1;
+
+    &:disabled {
+      background-color: $text-color-gray;
+      cursor: not-allowed;
+    }
   }
 
   &__items {
