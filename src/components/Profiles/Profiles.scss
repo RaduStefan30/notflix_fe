@@ -1,0 +1,80 @@
+.profiles {
+  min-height: 100vh;
+  @include flex-center-items;
+  flex-direction: column;
+  letter-spacing: 0.1rem;
+
+  &__container {
+    @include flex-center-align-items;
+    flex-direction: column;
+    gap: $margin-regular-2;
+  }
+  &__title {
+    font-size: $font-size-huge-1;
+    font-weight: $font-weight-light;
+    color: $text-color-white;
+  }
+
+  &__list {
+    @include flex-center-align-items;
+    gap: $margin-regular-2;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $margin-small-1;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      & img {
+        border: 2px solid $text-color-white;
+      }
+      & p {
+        color: $text-color-white;
+      }
+    }
+  }
+
+  &__avatar {
+    height: 17rem;
+    width: 17rem;
+    border-radius: $border-radius;
+    border: 2px solid transparent;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-size: $font-size-large-1;
+    font-weight: $font-weight-light;
+    color: $text-color-gray;
+  }
+
+  &__manage {
+    font-size: $font-size-large-1;
+    font-weight: $font-weight-light;
+    color: $text-color-gray;
+    padding: 1rem 3rem;
+    border: 1px solid $text-color-gray;
+    margin-top: $margin-large-2;
+
+    &:hover {
+      color: $text-color-white;
+      border-color: $text-color-white;
+    }
+  }
+
+  &__add {
+    height: 10rem;
+    width: 10rem;
+    background-image: url("add.svg");
+    margin-bottom: 3rem;
+    margin-left: $margin-small-1;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(0.7);
+    }
+  }
+}

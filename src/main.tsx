@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Protected from "./components/Protected/Protected";
 import Browse from "./pages/Browse/Browse";
 import Login from "./pages/Login/Login";
+import ManageProfiles from "./components/Profiles/ManageProfiles/ManageProfiles";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,14 @@ const router = createBrowserRouter([
     element: (
       <Protected>
         <Browse />
+      </Protected>
+    ),
+  },
+  {
+    path: "/manage-profiles",
+    element: (
+      <Protected>
+        <ManageProfiles />
       </Protected>
     ),
   },

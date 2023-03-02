@@ -1,15 +1,22 @@
-import React from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Profiles from "../../components/Profiles/Profiles";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 const Browse = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const displayProfiles = useAppSelector((state) => state.profile.display);
 
   const logout = () => {
     try {
       dispatch({
-        type: "user/logout",
+        type: "auth/logout",
+        payload: { email: "", token: "" },
+      });
+      dispatch({
+        type: "profile/setProfile",
+        payload: { name: "", display: true },
       });
     } catch (e) {
       console.log(e);
@@ -19,8 +26,8 @@ const Browse = () => {
   };
   return (
     <div>
-      Browse
-      <button onClick={logout}>Log out fake</button>
+      {displayProfiles && <Profiles />}
+      {!displayProfiles && <button onClick={logout}>Log out fake</button>}
     </div>
   );
 };

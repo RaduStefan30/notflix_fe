@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { useAppDispatch } from "../../../hooks";
 import GetStartedButton from "../../Buttons/GetStartedButton/GetStartedButton";
 import BigInput from "../../Inputs/BigInput/BigInput";
 
 const HeroForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const auth = useAppSelector((state: any) => state.auth);
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

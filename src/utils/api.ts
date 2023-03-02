@@ -8,6 +8,24 @@ const apiClient = axios.create({
   },
 });
 
+apiClient.interceptors.request.use(
+  (config) => {
+    const auth = localStorage.getItem("auth");
+    if (!auth) return config;
+
+    const { token } = JSON.parse(auth);
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+
 export const auth = async (
   data: { email: string; password: string },
   action: string
@@ -18,6 +36,17 @@ export const auth = async (
       email,
       password,
     });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const getProfiles = async () => {
+  try {
+    const response = await apiClient.get("/profiles");
     console.log(response);
     return response;
   } catch (error) {
