@@ -3,6 +3,7 @@
   padding: $padding-button-1;
   font-size: $font-size-regular;
   text-decoration: none;
+  border-radius: $border-radius;
 
   &:hover {
     cursor: pointer;
@@ -14,6 +15,18 @@
 
     &:hover {
       background-color: darken($primary-color, 5%);
+    }
+  }
+
+  &--alternative {
+    background-color: transparent;
+    color: $text-color-gray;
+    outline: 1px solid $text-color-gray;
+    outline-offset: -1px;
+
+    &:hover {
+      outline: 1px solid $text-color-white;
+      color: $text-color-white;
     }
   }
 }

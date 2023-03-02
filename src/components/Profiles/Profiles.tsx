@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getProfiles } from "../../store/reducers/profileSlice";
 import Profile from "./Profile/Profile";
 
-const Profiles = () => {
+const Profiles = (props: { editMode: boolean }) => {
   const [profiles, setProfiles] = useState([]);
+  const { editMode } = props || false;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -14,14 +15,6 @@ const Profiles = () => {
       type: "profile/setProfile",
       payload: { name, display: false },
     });
-  };
-
-  const manageProfiles = () => {
-    dispatch({
-      type: "profile/setProfile",
-      payload: { display: true, manage: "general" },
-    });
-    navigate("/manage-profiles");
   };
 
   const addProfile = () => {
@@ -45,6 +38,7 @@ const Profiles = () => {
       key={profile.name}
       name={profile.name}
       image={profile.image}
+      editMode={editMode}
       onClick={onClick}
     />
   ));
@@ -62,11 +56,29 @@ const Profiles = () => {
   return (
     <div className="profiles">
       <div className="profiles__container">
-        <h1 className="profiles__title">Who's watching?</h1>
+        <h1 className="profiles__title">
+          {editMode ? "Manage Profiles:" : "Who's watching?"}
+        </h1>
         <div className="profiles__list">{profilesList}</div>
-        <a className="btn profiles__manage" onClick={manageProfiles}>
-          Manage Profiles
-        </a>
+        {editMode ? (
+          <a
+            className="btn btn--primary profiles__manage"
+            onClick={() => {
+              navigate("/browse");
+            }}
+          >
+            Done
+          </a>
+        ) : (
+          <a
+            className="btn btn--alternative profiles__manage"
+            onClick={() => {
+              navigate("/manage-profiles");
+            }}
+          >
+            Manage Profiles
+          </a>
+        )}
       </div>
     </div>
   );

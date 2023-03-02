@@ -1,19 +1,61 @@
 .add {
-  &__container {
-    opacity: 100;
-    transition: opacity 0.3s ease-in-out;
+  @include flex-center-items;
+  min-height: 100vh;
+  letter-spacing: 0.05rem;
 
-    @include keyframes(fade-in) {
-      0% {
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.5;
-      }
-      100% {
-        opacity: 1;
+  @include keyframes(fade-in) {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @include animate(fade-in, 2s, linear, 1);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: $margin-regular-1;
+  }
+
+  &__title {
+    font-size: $font-size-huge-1;
+    font-weight: $font-weight-light;
+    color: $text-color-white;
+  }
+
+  &__text {
+    font-size: $font-size-regular;
+    font-weight: $font-weight-light;
+    color: darken($text-color-gray, 10%);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $margin-large-1;
+
+    &__items {
+      @include flex-center-align-items;
+      gap: $margin-regular-1;
+
+      & input {
+        width: 35rem;
+        background-color: lighten($background-color, 20%);
       }
     }
-    @include animate(fade-in, 1s, linear, 1);
+
+    &__buttons button {
+      font-size: $font-size-regular;
+      margin-right: $margin-small-2;
+      padding: 1rem 4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
   }
 }

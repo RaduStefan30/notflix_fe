@@ -54,3 +54,18 @@ export const getProfiles = async () => {
     return error;
   }
 };
+
+export const addProfile = async (data: { name: string; image: string }) => {
+  const { name, image } = data;
+  try {
+    const response = await apiClient.post("/profiles", {
+      name,
+      image,
+    });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
