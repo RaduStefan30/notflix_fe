@@ -37,11 +37,16 @@ export const addProfile = (
   onSuccess: any,
   onError: any
 ) => {
-  return async () => {
-    const profile = ((await api.addProfile({ name, image })) as any).data;
-    if (profile.error) {
-      return onError(profile.message);
+  return async (dispatch: any) => {
+    const response = (await api.addProfile({ name, image })) as any;
+
+    if (response.message) {
+      return onError(response.response.data.message);
     }
+    dispatch({
+      type: "profile/setProfile",
+      payload: { display: "true", manage: "general" },
+    });
     return onSuccess(profile);
   };
 };

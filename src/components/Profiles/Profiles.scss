@@ -17,6 +17,7 @@
   &__list {
     @include flex-center-align-items;
     gap: $margin-regular-2;
+    position: relative;
   }
 
   &__item {
@@ -59,6 +60,9 @@
   }
 
   &__add {
+    position: absolute;
+    top: 3.5rem;
+    right: -15rem;
     height: 10rem;
     width: 10rem;
     background-image: url("add.svg");

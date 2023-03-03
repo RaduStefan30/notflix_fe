@@ -1,4 +1,5 @@
 .add {
+  @include fade-in;
   @include flex-center-items;
   min-height: 100vh;
   letter-spacing: 0.05rem;
@@ -21,18 +22,48 @@
     color: darken($text-color-gray, 10%);
   }
 
+  &__message {
+    &--before {
+      left: 36%;
+      top: 50%;
+      position: absolute;
+      z-index: -1;
+      font-size: $font-size-small-1;
+    }
+    @keyframes move-up {
+      0% {
+        opacity: 0;
+      }
+      25% {
+        transform: translateY(-5rem);
+        opacity: 1;
+      }
+
+      80% {
+        transform: translateY(-5rem);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    @include animate(move-up, 3s, ease-in-out, 1);
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
     gap: $margin-large-1;
 
     &__items {
+      position: relative;
       @include flex-center-align-items;
       gap: $margin-regular-1;
 
       & input {
         width: 35rem;
         background-color: lighten($background-color, 20%);
+        color: $text-color-white;
       }
     }
 

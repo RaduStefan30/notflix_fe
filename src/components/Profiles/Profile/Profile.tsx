@@ -11,6 +11,11 @@ const Profile = (props: {
   const { editMode } = props || false;
   const [edit, setEdit] = useState(false);
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setEdit((prev) => !prev);
+  };
+
   return (
     <Fragment>
       {edit && (
@@ -18,7 +23,7 @@ const Profile = (props: {
           <div className="edit__container">
             <div className="edit__form__container">
               <h1 className="edit__title">Edit Profile</h1>
-              <form className="edit__form">
+              <form className="edit__form" onSubmit={handleSubmit}>
                 <div className="edit__form__items">
                   <img
                     src={`profile${Math.floor(Math.random() * 4 + 1)}.jpg`}

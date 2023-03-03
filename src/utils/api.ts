@@ -45,10 +45,8 @@ export const auth = async (
 export const getProfiles = async () => {
   try {
     const response = await apiClient.get("/profiles");
-    console.log(response);
     return response;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
@@ -60,10 +58,8 @@ export const addProfile = async (data: { name: string; image: string }) => {
       name,
       image,
     });
-    console.log(response);
     return response;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
