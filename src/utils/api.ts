@@ -63,3 +63,21 @@ export const addProfile = async (data: { name: string; image: string }) => {
     return error;
   }
 };
+
+export const editProfile = async (data: {
+  name: string;
+  newName: string;
+  newImage: string;
+}) => {
+  const { name, newName, newImage } = data;
+  try {
+    const response = await apiClient.put("/profiles", {
+      name,
+      newName,
+      newImage,
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};

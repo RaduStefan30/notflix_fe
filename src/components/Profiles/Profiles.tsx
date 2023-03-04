@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
 import { getProfiles } from "../../store/reducers/profileSlice";
 import Profile from "./Profile/Profile";
 
@@ -16,6 +16,7 @@ const Profiles = (props: { editMode: boolean }) => {
       type: "profile/setProfile",
       payload: { name, display: false },
     });
+    navigate("/browse/home");
   };
 
   const addProfile = () => {
@@ -28,6 +29,7 @@ const Profiles = (props: { editMode: boolean }) => {
 
   const onSuccess = (profiles: any) => {
     setProfiles(profiles);
+    navigate("/browse/home");
     setIsMounted(true);
   };
 
@@ -53,7 +55,7 @@ const Profiles = (props: { editMode: boolean }) => {
 
   useEffect(() => {
     dispatch(getProfiles(onSuccess, onError));
-  }, []);
+  }, [profiles]);
 
   return (
     <div className="profiles">

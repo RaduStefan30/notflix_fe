@@ -51,5 +51,30 @@ export const addProfile = (
   };
 };
 
+export const editProfile = (
+  name: string,
+  newName: string,
+  newImage: string,
+  onSuccess: any,
+  onError: any
+) => {
+  return async (dispatch: any) => {
+    const response = (await api.editProfile({
+      name,
+      newName,
+      newImage,
+    })) as any;
+
+    if (response.message) {
+      return onError(response.response.data.message);
+    }
+    dispatch({
+      type: "profile/setProfile",
+      payload: { display: "true", manage: "general" },
+    });
+    return onSuccess(profile);
+  };
+};
+
 export const profileActions = profileSlice.actions;
 export default profileSlice.reducer;

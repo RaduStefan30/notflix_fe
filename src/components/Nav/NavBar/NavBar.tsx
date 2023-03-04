@@ -5,7 +5,7 @@ import NavLink from "../NavLink/NavLink";
 const NavBar = () => {
   return (
     <nav className="nav">
-      <Logo />
+      <Logo path="/" />
       <span className="nav__links">
         <NavLink>Pricing</NavLink>
         <NavLink>About</NavLink>

@@ -1,0 +1,19 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  & > .logo {
+    margin: $margin-large-1;
+    align-self: center;
+  }
+
+  &__links {
+    @include flex-center-justify-items;
+    margin-left: $margin-large-2;
+    flex-direction: column;
+    gap: $margin-large-1;
+    height: 100%;
+    font-size: $font-size-large-1;
+    text-transform: uppercase;
+  }
+}

@@ -27,6 +27,20 @@ const router = createBrowserRouter([
         <Browse />
       </Protected>
     ),
+    children: [
+      {
+        path: "home",
+        element: <div>General Content</div>,
+      },
+      {
+        path: "movies",
+        element: <div>Movies</div>,
+      },
+      {
+        path: "series",
+        element: <div>Series</div>,
+      },
+    ],
   },
   {
     path: "/manage-profiles",

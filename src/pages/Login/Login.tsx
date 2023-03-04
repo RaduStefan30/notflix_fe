@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <div className="login">
       {alert.display && <Alert type={alert.type} message={alert.message} />}
-      <Logo />
+      <Logo path="/" />
       <div className="login__container">
         <h1 className="login__title">Sign In</h1>
         <form onSubmit={handleSubmit} className="login__form">

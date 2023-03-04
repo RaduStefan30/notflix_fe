@@ -13,6 +13,7 @@
 
 @import "../components/Buttons/SignInButton/SignInButton.scss";
 @import "../components/Buttons/GetStartedButton/GetStartedButton.scss";
+@import "../components/Buttons/LogoutButton/LogoutButton.scss";
 
 @import "../components/Inputs/BigInput/BigInput.scss";
 @import "../components/Inputs/SmallInput/SmallInput.scss";
@@ -23,10 +24,13 @@
 
 @import "../components/Nav/NavBar/NavBar.scss";
 @import "../components/Nav/NavLink/NavLink.scss";
+@import "../components/Nav/SideBar/SideBar.scss";
 
 @import "../components/Profiles/Profiles.scss";
 @import "../components/Profiles/Profile/Profile.scss";
 @import "../components/Profiles/ManageProfiles/ManageProfiles.scss";
+
+@import "../components/Content/Content.scss";
 
 @import "../pages/Home/Home.scss";
 @import "../pages/Browse/Browse.scss";

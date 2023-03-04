@@ -1,5 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { BsPencil } from "react-icons/bs";
+import { useAppDispatch } from "../../../hooks";
+import { editProfile } from "../../../store/reducers/profileSlice";
 
 const Profile = (props: {
   name: string;
@@ -7,13 +9,29 @@ const Profile = (props: {
   onClick: any;
   editMode: boolean;
 }) => {
+  const dispatch = useAppDispatch();
+
   const { name, image, onClick } = props;
   const { editMode } = props || false;
   const [edit, setEdit] = useState(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    setEdit((prev) => !prev);
+    const newName = e.target.name.value;
+    dispatch(
+      editProfile(
+        name,
+        newName,
+        image,
+        () => {
+          console.log("success");
+          setEdit((prev) => !prev);
+        },
+        (error: string) => {
+          console.log(error);
+        }
+      )
+    );
   };
 
   return (
@@ -25,16 +43,13 @@ const Profile = (props: {
               <h1 className="edit__title">Edit Profile</h1>
               <form className="edit__form" onSubmit={handleSubmit}>
                 <div className="edit__form__items">
-                  <img
-                    src={`profile${Math.floor(Math.random() * 4 + 1)}.jpg`}
-                    alt="profile"
-                    className="profiles__avatar"
-                  />
+                  <img src={image} alt="profile" className="profiles__avatar" />
                   <input
                     type="text"
                     id="name"
                     placeholder="Name"
                     className="edit__input"
+                    defaultValue={name}
                   />
                 </div>
                 <div className="edit__form__buttons">
