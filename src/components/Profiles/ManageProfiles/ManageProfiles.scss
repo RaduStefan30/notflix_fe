@@ -1,10 +1,10 @@
 .add {
-  @include fade-in;
   @include flex-center-items;
   min-height: 100vh;
   letter-spacing: 0.05rem;
 
   &__container {
+    @include fade-in;
     display: flex;
     flex-direction: column;
     gap: $margin-regular-1;

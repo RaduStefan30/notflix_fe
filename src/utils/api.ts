@@ -81,3 +81,12 @@ export const editProfile = async (data: {
     return error;
   }
 };
+
+export const profileImages = async () => {
+  try {
+    const response = (await apiClient.get("/profiles/images")) as any;
+    return [...response.data.imagesUrls];
+  } catch (error) {
+    return error;
+  }
+};

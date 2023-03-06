@@ -1,12 +1,14 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { addProfile } from "../../../store/reducers/profileSlice";
 import SmallInput from "../../Inputs/SmallInput/SmallInput";
 import Profiles from "../Profiles";
+import { profileImages } from "../../../utils/api";
 
 const ManageProfiles = () => {
   const { manage } = useAppSelector((state) => state.profile);
   const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
   const dispatch = useAppDispatch();
 
   const handleFinishAdding = () => {
@@ -16,7 +18,13 @@ const ManageProfiles = () => {
     });
   };
 
-  const randomImage = `profile${Math.floor(Math.random() * 4 + 1)}.jpg`;
+  useEffect(() => {
+    const getImages = async () => {
+      const images = (await profileImages()) as any;
+      setImage(images[Math.floor(Math.random() * images.length)]);
+    };
+    getImages();
+  }, []);
 
   const onSuccess = () => {
     setMessage("Profile added successfully!");
@@ -32,7 +40,7 @@ const ManageProfiles = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const name = e.target.name.value;
-    dispatch(addProfile(name, memo, onSuccess, onError));
+    dispatch(addProfile(name, image, onSuccess, onError));
   };
 
   useEffect(() => {
@@ -43,42 +51,42 @@ const ManageProfiles = () => {
     };
   }, [message]);
 
-  const memo = useMemo(() => randomImage, [manage]);
-
   if (manage === "add") {
     return (
-      <div className="add">
-        <div className="add__container">
-          <h1 className="add__title">Add Profile</h1>
-          <p className="add__text">
-            Add a profile for another person watching Notflix.
-          </p>
-          <div className="add__form__container">
-            <form className="add__form" onSubmit={handleSubmit}>
-              <div className="add__form__items">
-                <img src={memo} alt="profile" className="profiles__avatar" />
-                <div
-                  className={`add__message--before ${
-                    message && "add__message"
-                  }`}
-                >
-                  {message}
+      image.length && (
+        <div className="add">
+          <div className="add__container">
+            <h1 className="add__title">Add Profile</h1>
+            <p className="add__text">
+              Add a profile for another person watching Notflix.
+            </p>
+            <div className="add__form__container">
+              <form className="add__form" onSubmit={handleSubmit}>
+                <div className="add__form__items">
+                  <img src={image} alt="profile" className="profiles__avatar" />
+                  <div
+                    className={`add__message--before ${
+                      message && "add__message"
+                    }`}
+                  >
+                    {message}
+                  </div>
+                  <SmallInput type="text" id="name" placeholder="Name" />
                 </div>
-                <SmallInput type="text" id="name" placeholder="Name" />
-              </div>
-              <div className="add__form__buttons">
-                <button className=" btn btn--primary">Continue</button>
-                <button
-                  className="btn btn--alternative"
-                  onClick={handleFinishAdding}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+                <div className="add__form__buttons">
+                  <button className=" btn btn--primary">Continue</button>
+                  <button
+                    className="btn btn--alternative"
+                    onClick={handleFinishAdding}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      )
     );
   }
   return <Profiles editMode={true} />;

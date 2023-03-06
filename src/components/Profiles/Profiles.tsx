@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { getProfiles } from "../../store/reducers/profileSlice";
@@ -10,6 +10,8 @@ const Profiles = (props: { editMode: boolean }) => {
   const { editMode } = props || false;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const profilesMemo = useMemo(() => profiles, [editMode]);
 
   const onClick = (name: string) => {
     dispatch({
@@ -55,7 +57,7 @@ const Profiles = (props: { editMode: boolean }) => {
 
   useEffect(() => {
     dispatch(getProfiles(onSuccess, onError));
-  }, [profiles]);
+  }, [profilesMemo]);
 
   return (
     <div className="profiles">
