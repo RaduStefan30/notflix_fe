@@ -90,3 +90,12 @@ export const profileImages = async () => {
     return error;
   }
 };
+
+export const getMedia = async () => {
+  try {
+    const response = await apiClient.get("/media");
+    return response.data.media;
+  } catch (error) {
+    return error;
+  }
+};

@@ -8,6 +8,7 @@ import Protected from "./components/Protected/Protected";
 import Browse from "./pages/Browse/Browse";
 import Login from "./pages/Login/Login";
 import ManageProfiles from "./components/Profiles/ManageProfiles/ManageProfiles";
+import General from "./components/Content/General/General";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "home",
-        element: <div>General Content</div>,
+        element: <General />,
       },
       {
         path: "movies",

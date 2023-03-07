@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
-import LogoutButton from "../Buttons/LogoutButton/LogoutButton";
-import SideBar from "../Nav/SideBar/SideBar";
+import SideBar from "../../Nav/SideBar/SideBar";
 
 const Content = () => {
   return (
@@ -8,7 +7,6 @@ const Content = () => {
       <SideBar />
       <div className="content__wrapper">
         <Outlet />
-        <LogoutButton />
       </div>
     </div>
   );

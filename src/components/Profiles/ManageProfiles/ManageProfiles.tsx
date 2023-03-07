@@ -52,41 +52,41 @@ const ManageProfiles = () => {
   }, [message]);
 
   if (manage === "add") {
-    return (
-      image.length && (
-        <div className="add">
-          <div className="add__container">
-            <h1 className="add__title">Add Profile</h1>
-            <p className="add__text">
-              Add a profile for another person watching Notflix.
-            </p>
-            <div className="add__form__container">
-              <form className="add__form" onSubmit={handleSubmit}>
-                <div className="add__form__items">
-                  <img src={image} alt="profile" className="profiles__avatar" />
-                  <div
-                    className={`add__message--before ${
-                      message && "add__message"
-                    }`}
-                  >
-                    {message}
-                  </div>
-                  <SmallInput type="text" id="name" placeholder="Name" />
+    return image.length ? (
+      <div className="add">
+        <div className="add__container">
+          <h1 className="add__title">Add Profile</h1>
+          <p className="add__text">
+            Add a profile for another person watching Notflix.
+          </p>
+          <div className="add__form__container">
+            <form className="add__form" onSubmit={handleSubmit}>
+              <div className="add__form__items">
+                <img src={image} alt="profile" className="profiles__avatar" />
+                <div
+                  className={`add__message--before ${
+                    message && "add__message"
+                  }`}
+                >
+                  {message}
                 </div>
-                <div className="add__form__buttons">
-                  <button className=" btn btn--primary">Continue</button>
-                  <button
-                    className="btn btn--alternative"
-                    onClick={handleFinishAdding}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
+                <SmallInput type="text" id="name" placeholder="Name" />
+              </div>
+              <div className="add__form__buttons">
+                <button className=" btn btn--primary">Continue</button>
+                <button
+                  className="btn btn--alternative"
+                  onClick={handleFinishAdding}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      )
+      </div>
+    ) : (
+      <div>Loading</div>
     );
   }
   return <Profiles editMode={true} />;

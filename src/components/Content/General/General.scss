@@ -1,0 +1,80 @@
+.general {
+  @include flex-center-items;
+  height: 100vh;
+  width: 75vw;
+
+  &__container {
+    position: relative;
+    display: flex;
+    gap: $margin-regular-1;
+    height: 50rem;
+  }
+
+  &__item {
+    transition: flex 1s ease;
+    position: relative;
+    flex: 1;
+
+    &:hover {
+      flex-grow: 2.5;
+    }
+
+    @keyframes scale-up {
+      0% {
+        opacity: 0;
+        height: 20%;
+      }
+
+      100% {
+        opacity: 1;
+        height: 100%;
+      }
+    }
+
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        animation: scale-up
+          calc(0.9s - #{$i} * 0.07s)
+          calc(#{$i} * 0.08s)
+          ease-out
+          1;
+        animation-fill-mode: both;
+      }
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      margin-top: 4rem;
+    }
+
+    &:nth-child(3),
+    &:nth-child(6) {
+      margin-top: 8rem;
+    }
+
+    &:nth-child(7) {
+      margin-top: 4rem;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    transition: all 0.3s ease;
+    transform: scale(1, 1);
+  }
+
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.full {
+  transition: all 1s ease;
+  flex-grow: 100;
+}

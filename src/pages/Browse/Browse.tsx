@@ -1,4 +1,4 @@
-import Content from "../../components/Content/Content";
+import Content from "../../components/Content/Content/Content";
 import Profiles from "../../components/Profiles/Profiles";
 import { useAppSelector } from "../../hooks";
 
