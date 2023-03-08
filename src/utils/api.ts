@@ -99,3 +99,12 @@ export const getMedia = async () => {
     return error;
   }
 };
+
+export const getMainPageMedia = async () => {
+  try {
+    const response = await apiClient.get("/media/main");
+    return response.data.media;
+  } catch (error) {
+    return error;
+  }
+};

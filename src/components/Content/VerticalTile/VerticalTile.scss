@@ -1,0 +1,34 @@
+.fade-in {
+  @include keyframes(fade-in) {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  animation: fade-in 0.3s 0.3s ease 1;
+  animation-fill-mode: both;
+}
+
+.fade-out {
+  @include keyframes(fade-out) {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  animation: fade-out 0.05s ease 1;
+  animation-fill-mode: both;
+  pointer-events: none;
+}

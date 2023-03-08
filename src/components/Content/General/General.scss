@@ -1,22 +1,50 @@
 .general {
   @include flex-center-items;
+  margin-top: -8rem;
   height: 100vh;
-  width: 75vw;
+  max-width: 75vw;
 
   &__container {
     position: relative;
     display: flex;
     gap: $margin-regular-1;
-    height: 50rem;
+    height: 70rem;
+
+    &.single > :not(.selected) {
+      opacity: 0 !important;
+      pointer-events: none;
+      flex: 0;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: lighten($text-color-gray, 15%);
+    font-size: $font-size-large-4;
+    text-transform: uppercase;
+    font-weight: $font-weight-semi-bold;
+    letter-spacing: 0.1rem;
+    z-index: 10;
   }
 
   &__item {
-    transition: flex 1s ease;
+    transition: all 0.5s ease;
     position: relative;
-    flex: 1;
+    flex: 1 1 0;
+
+    &.selected {
+      flex-grow: 100;
+    }
 
     &:hover {
       flex-grow: 2.5;
+
+      & img {
+        filter: brightness(0.8);
+      }
     }
 
     @keyframes scale-up {
@@ -34,8 +62,8 @@
     @for $i from 1 through 8 {
       &:nth-child(#{$i}) {
         animation: scale-up
-          calc(0.9s - #{$i} * 0.07s)
-          calc(#{$i} * 0.08s)
+          calc(1s - #{$i} * 0.05s)
+          calc(#{$i} * 0.1s)
           ease-out
           1;
         animation-fill-mode: both;
@@ -57,24 +85,60 @@
     }
 
     & img {
+      transition: filter 0.4s;
       height: 100%;
       width: 100%;
       object-fit: cover;
+      filter: brightness(0.6);
     }
-
-    transition: all 0.3s ease;
-    transform: scale(1, 1);
   }
 
-  &__title {
+  &__genre {
+    @include fade-in;
     position: absolute;
-    top: 50%;
+    bottom: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    color: lighten($text-color-gray, 10%);
+    font-size: $font-size-large-1;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+
+  &__links {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: lighten($text-color-gray, 30%);
+    font-size: $font-size-large-1;
+    text-transform: capitalize;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+      &:hover {
+        color: $primary-color;
+        cursor: pointer;
+      }
+    }
+
+    a > * {
+      margin-left: $margin-small-1;
+      font-size: $font-size-large-3;
+      transform: translateY(25%);
+    }
   }
 }
 
-.full {
-  transition: all 1s ease;
-  flex-grow: 100;
+.single {
+  gap: 0;
+
+  & img {
+    filter: brightness(0.8);
+  }
 }

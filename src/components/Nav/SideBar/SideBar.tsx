@@ -5,7 +5,7 @@ const SideBar = () => {
   const linkClasses = "sidebar__link link";
 
   const activeLinkClasses = (isActive: boolean) =>
-    isActive ? linkClasses + " active" : linkClasses;
+    isActive ? linkClasses + " sidebar__active" : linkClasses;
   return (
     <div className="sidebar">
       <Logo path="home" />

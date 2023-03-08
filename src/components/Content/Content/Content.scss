@@ -1,4 +1,8 @@
 .content {
   display: grid;
   grid-template-columns: 0.15fr 1fr;
+
+  &__wrapper {
+    @include flex-center-items;
+  }
 }
