@@ -9,6 +9,8 @@ import Browse from "./pages/Browse/Browse";
 import Login from "./pages/Login/Login";
 import ManageProfiles from "./components/Profiles/ManageProfiles/ManageProfiles";
 import General from "./components/Content/General/General";
+import Movies from "./components/Content/Movies/Movies";
+import Series from "./components/Content/Series/Series";
 
 const router = createBrowserRouter([
   {
@@ -34,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "movies",
-        element: <div>Movies</div>,
+        element: <Movies />,
       },
       {
         path: "series",
-        element: <div>Series</div>,
+        element: <Series />,
       },
     ],
   },

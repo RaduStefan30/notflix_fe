@@ -15,7 +15,7 @@ const General = () => {
   }, []);
   return (
     <>
-      <div className="general">
+      <div className="general ">
         <div
           className={
             single ? "general__container single" : "general__container"

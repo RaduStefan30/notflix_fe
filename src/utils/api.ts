@@ -108,3 +108,21 @@ export const getMainPageMedia = async () => {
     return error;
   }
 };
+
+export const getMovies = async () => {
+  try {
+    const response = await apiClient.get("/media/movies");
+    return response.data.movies;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getSeries = async () => {
+  try {
+    const response = await apiClient.get("/media/series");
+    return response.data.series;
+  } catch (error) {
+    return error;
+  }
+};
