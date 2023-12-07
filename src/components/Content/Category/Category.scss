@@ -1,0 +1,10 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  &-hero {
+    height: 80vh;
+    margin-top: 6rem;
+  }
+}
