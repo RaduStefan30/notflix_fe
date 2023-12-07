@@ -14,19 +14,19 @@ const SideBar = () => {
           to="home"
           className={({ isActive }) => activeLinkClasses(isActive)}
         >
-          <span className="sidebar__name">Home</span>
+          <span className="sidebar__text">Home</span>
         </NavLink>
         <NavLink
           to="movies"
           className={({ isActive }) => activeLinkClasses(isActive)}
         >
-          <span className="sidebar__name">Movies</span>
+          <span className="sidebar__text">Movies</span>
         </NavLink>
         <NavLink
           to="series"
           className={({ isActive }) => activeLinkClasses(isActive)}
         >
-          <span className="sidebar__name">Series</span>
+          <span className="sidebar__text">Series</span>
         </NavLink>
       </div>
     </div>

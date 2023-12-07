@@ -20,13 +20,6 @@ const VerticalTile = (props: { single: any; setSingle: any; item: any }) => {
       >
         {item.name}
       </h1>
-      <p
-        className={
-          !single ? "general__genre fade-in" : "general__genre fade-out"
-        }
-      >
-        {item.genre}
-      </p>
       <div
         className={
           selected ? "general__links fade-in" : "general__links fade-out"
