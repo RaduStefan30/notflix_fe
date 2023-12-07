@@ -1,34 +1,36 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
+import { useEffect } from "react";
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
 
 const Media = (props: { media: any }) => {
   const { media } = props;
+
+  useEffect(() => {
+    const swiper = new Swiper(".swiper", {
+      slidesPerView: 4,
+      slidesOffsetAfter: 0,
+      spaceBetween: 10,
+    });
+  }, [media]);
+
   return (
-    <>
-      <div className="media">
-        {media.length ? (
-          <Swiper
-            navigation={true}
-            modules={[Navigation]}
-            spaceBetween={10}
-            slidesPerView={4}
-            slidesPerGroup={4}
-          >
+    <div className="media">
+      {media.length ? (
+        <div className="swiper">
+          <div className="swiper-wrapper">
             {media.map((item: any) => {
               return (
-                <SwiperSlide key={item._id}>
+                <div className="swiper-slide" key={item._id}>
                   <img src={item.image} />
-                </SwiperSlide>
+                </div>
               );
             })}
-          </Swiper>
-        ) : (
-          <div>Loading...</div>
-        )}
-      </div>
-    </>
+          </div>
+        </div>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
   );
 };
 
